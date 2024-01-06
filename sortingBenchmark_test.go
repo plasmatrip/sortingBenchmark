@@ -1,4 +1,4 @@
-package sortingbenchmark
+package sortingBanchmark
 
 import (
 	"fmt"
@@ -157,7 +157,7 @@ func BenchmarkBubbleSort(b *testing.B) {
 	}
 }
 
-// Сортирпвка перемешиванием
+// Сортировка перемешиванием
 func BenchmarkShakingSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
 	b.ResetTimer()
@@ -169,7 +169,7 @@ func BenchmarkShakingSort(b *testing.B) {
 	}
 }
 
-// Сортирвка расческой
+// Сортировка расческой
 func BenchmarkCombSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
 	b.ResetTimer()
@@ -181,7 +181,7 @@ func BenchmarkCombSort(b *testing.B) {
 	}
 }
 
-// Сортирвка вставкой
+// Сортировка вставкой
 func BenchmarkInsertionSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
 	b.ResetTimer()
@@ -193,7 +193,7 @@ func BenchmarkInsertionSort(b *testing.B) {
 	}
 }
 
-// Сортирвка выбором
+// Сортировка выбором
 func BenchmarkSelectionSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
 	b.ResetTimer()
