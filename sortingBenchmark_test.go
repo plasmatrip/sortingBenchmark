@@ -8,9 +8,11 @@ import (
 	"testing"
 )
 
-var arrLen int = 100
+var arrLen int = 1000
+var ar []int = make([]int, arrLen)
 
 func init() {
+	initArrByRandomValue(ar, 100)
 	fmt.Printf("Массив из %d элементов.\n", arrLen)
 }
 
@@ -146,12 +148,10 @@ func quickSortByCenterImpl(arr []int, start int, end int) {
 // Сортировка пузырьком
 func BenchmarkBubbleSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		bubbleSort(list)
 	}
@@ -160,12 +160,10 @@ func BenchmarkBubbleSort(b *testing.B) {
 // Сортирпвка перемешиванием
 func BenchmarkShakingSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		shakingSort(list)
 	}
@@ -174,12 +172,10 @@ func BenchmarkShakingSort(b *testing.B) {
 // Сортирвка расческой
 func BenchmarkCombSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		combSort(list)
 	}
@@ -188,12 +184,10 @@ func BenchmarkCombSort(b *testing.B) {
 // Сортирвка вставкой
 func BenchmarkInsertionSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		insertionSort(list)
 	}
@@ -202,12 +196,10 @@ func BenchmarkInsertionSort(b *testing.B) {
 // Сортирвка выбором
 func BenchmarkSelectionSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		selectionSort(list)
 	}
@@ -216,12 +208,10 @@ func BenchmarkSelectionSort(b *testing.B) {
 // Быстрая сортировка. Опорный элемент последний.
 func BenchmarkQuickSortByEndElement(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		quickSort(list)
 	}
@@ -230,12 +220,10 @@ func BenchmarkQuickSortByEndElement(b *testing.B) {
 // Быстрая сортировка. Опорный элемент в центре.
 func BenchmarkQuickSortByCenterElement(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		quickSortByCenter(list)
 	}
@@ -244,12 +232,10 @@ func BenchmarkQuickSortByCenterElement(b *testing.B) {
 // Сортировка в Go sort.Slice().
 func BenchmarkGoSortSliceSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		sort.Slice(list, func(i, j int) bool {
 			return list[i] < list[j]
@@ -260,12 +246,10 @@ func BenchmarkGoSortSliceSort(b *testing.B) {
 // Сортировка в Go sort.SliceStable().
 func BenchmarkGoSortSliceStableSort(b *testing.B) {
 	var list []int = make([]int, arrLen)
-	var arr []int = make([]int, arrLen)
-	initArrByRandomValue(arr, 100)
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		b.StopTimer()
-		copy(list, arr)
+		copy(list, ar)
 		b.StartTimer()
 		sort.SliceStable(list, func(i, j int) bool {
 			return list[i] < list[j]
