@@ -1,3 +1,3 @@
-module sortingBanchmark
+module sortingBenchmark
 
 go 1.21.5

@@ -1,4 +1,4 @@
-package sortingBanchmark
+package sortingBenchmark
 
 import (
 	"fmt"
